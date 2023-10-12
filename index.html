@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인터랙티브 음성 데모</title>
+    <link rel="stylesheet" href="styles.css">
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .language-table {
+            width: 100%;
+            margin: auto;
+            table-layout: fixed;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .language-table th, .language-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .language-table th {
+            background-color: #f2f2f2;
+        }
+        .language-table th:first-child {
+            white-space: nowrap;
+            width: 15%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>ENHANCING MULTILINGUAL TTS WITH VOICE CONVERSION BASED DATA AUGMENTATION AND POSTERIOR EMBEDDING</h1>
+		<h3>Hyun-Wook Yoon, Jin-Seob Kim, Ryuichi Yamamoto, Ryo Terashima, Chan-Ho Song, Jae-Min Kim, Eunwoo Song</h3>
+    </header>
+
+    <section id="description">
+        <h2>Abstract</h2>
+        <p>This paper proposes a multilingual, multi-speaker (MM) TTS system by using a voice conversion (VC)-based data augmentation method. Creating an MM-TTS model is challenging, owing to the difficulties of collecting polyglot data from multiple speakers. To address this problem, we adopt a cross-lingual, multi-speaker (CM) VC model trained with multiple speakers’ monolingual databases. As this model effectively transfers acoustic attributes while retaining the content information, it is possible to generate each speaker’s polyglot corpora. Subsequently, we design the MM-TTS model with variational autoencoder (VAE)-based posterior embeddings. It is to be noted that incorporating VC-augmented polyglot corpora into the TTS training process might degrade synthetic quality, since the corpora sometimes contain unwanted artifacts. To mitigate this issue, the VAE is trained to capture the acoustic dissimilarity between the recorded and VC-augmented datasets. Through the selective choice of the posterior embeddings obtained from the original recordings in the training set, the proposed model enables the generation of acoustically clearer voices.
+		</p>
+    </section>
+
+    <section id="audio-samples">
+		<!DOCTYPE html>
+
+    <!-- Korean Female Speaker -->
+    <section id="korean-female">
+		<h2>First language: English</h2>
+        <table class="language-table">
+            <thead>
+                <tr>
+                    <th>Language \ System</th>
+                    <th>CM-TTS</th>
+                    <th>MM-TTS</th>
+					<th>MM-TTS(vae)</th>
+					<th>Recording</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>English (Spoken)</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fean_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fean_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fean_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						<audio controls>
+                            <source src="./samples/Recording/fean00112.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                </tr>
+                <tr>
+                    <td>Korean (Unspoken) </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fean_ko_14.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fean_ko_14.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fean_ko_14.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						N/A
+					</td>
+                </tr>
+                <tr>
+                    <td>Japanese (Unspoken) </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fean_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fean_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fean_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						N/A
+					</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>First language: Korean</h2>
+        <table class="language-table">
+            <thead>
+                <tr>
+                    <th>Language \ System</th>
+                    <th>CM-TTS</th>
+                    <th>MM-TTS</th>
+					<th>MM-TTS(vae)</th>
+					<th>Recording</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Korean (Spoken)</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fkkr_ko_06.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fkkr_ko_06.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fkkr_ko_06.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						<audio controls>
+                            <source src="./samples/Recording/fkkr071628.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                </tr>
+                <tr>
+                    <td>Japanese (Unspoken) </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fkkr_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fkkr_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fkkr_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						N/A
+					</td>
+                </tr>
+                <tr>
+                    <td>English (Unspoken) </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fkkr_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fkkr_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fkkr_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						N/A
+					</td>
+                </tr>
+            </tbody>
+        </table>
+		<h2>First language: Japanese</h2>
+        <table class="language-table">
+            <thead>
+                <tr>
+                    <th>Language \ System</th>
+                    <th>CM-TTS</th>
+                    <th>MM-TTS</th>
+					<th>MM-TTS(vae)</th>
+					<th>Recording</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Japanese (Spoken)</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fyma_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fyma_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fyma_jp_05.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						<audio controls>
+                            <source src="./samples/Recording/fyma00943.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                </tr>
+                <tr>
+                    <td>English (Unspoken) </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fyma_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fyma_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fyma_en_us_03.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						N/A
+					</td>
+                </tr>
+                <tr>
+                    <td>Korean (Unspoken) </td>
+                    <td>
+						<audio controls>
+                            <source src="./samples/CM-TTS/CL-TTS_fyma_ko_06.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+                    <td>
+                        <audio controls>
+                            <source src="./samples/MM-TTS/ML-TTS_fyma_ko_06.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </td>
+					<td>
+						<audio controls>
+                            <source src="./samples/MMV-TTS/ML-VAE-TTS_fyma_ko_06.wav" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+					</td>
+					<td>
+						N/A
+					</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- 다른 화자들에 대한 섹션도 이와 유사한 방식으로 추가하세요. -->
+
+</body>
+</html>
+
+	</section>
+	
+	
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
