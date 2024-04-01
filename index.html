@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo website</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	<style>
         body {
             font-family: Arial, sans-serif;
@@ -29,6 +31,35 @@
         .language-table th:first-child {
             white-space: nowrap;
             width: 15%;
+        }
+        .figure-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px; /* 기본 간격 */
+            justify-content: space-around;
+        }
+        .figure-container figure {
+            flex: 100%; /* 이미지가 줄바꿈되도록 설정 */
+            max-width: 100%; /* 3개의 이미지가 한 줄에 표시될 경우 간격을 고려 */
+        }
+        .figure-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .figure-container figure {
+                flex: 1;
+                max-width: calc(33.333% - 16px); /* 화면이 좁아질 경우 이미지 2개가 한 줄에 표시 */
+            }
+        }
+        /* 추가적으로, 너무 큰 화면에서 이미지들이 너무 퍼지는 것을 방지하기 위해 max-width를 설정할 수 있음 */
+        @media (min-width: 1024px) {
+            .figure-container {
+                justify-content: center;
+            }
+            .figure-container figure {
+                max-width: 300px; /* 또는 적절한 최대 너비 */
+            }
         }
     </style>
 </head>
@@ -71,7 +102,7 @@
             <!-- Third figure for the recorded/augmented colored plot -->
             <figure>
                 <img src="t-sne_train_rec_aug_ver2.png" alt="Data plot colored by recorded/augmented">
-                <figcaption>&lt;Colored by recorded/augmented&gt;</figcaption>
+                <figcaption>&lt;Colored by recording&gt;</figcaption>
             </figure>
         </section>
     </section>
@@ -90,8 +121,8 @@
                     <th>Language \ System</th>
                     <th>CM-TTS</th>
                     <th>MM-TTS</th>
-					<th>MM-TTS(vae)</th>
-					<th>Recording</th>
+					<th>MM-TTS\( \mathrm{_{vae}} \)</th>
+					<th>GT</th>
                 </tr>
             </thead>
             <tbody>
@@ -179,8 +210,8 @@
                     <th>Language \ System</th>
                     <th>CM-TTS</th>
                     <th>MM-TTS</th>
-					<th>MM-TTS(vae)</th>
-					<th>Recording</th>
+					<th>MM-TTS\( \mathrm{_{vae}} \)</th>
+					<th>GT</th>
                 </tr>
             </thead>
             <tbody>
@@ -268,8 +299,8 @@
                     <th>Language \ System</th>
                     <th>CM-TTS</th>
                     <th>MM-TTS</th>
-					<th>MM-TTS(vae)</th>
-					<th>Recording</th>
+					<th>MM-TTS\( \mathrm{_{vae}} \)</th>
+					<th>GT</th>
                 </tr>
             </thead>
             <tbody>
@@ -361,8 +392,8 @@
                     <th>Language \ System</th>
                     <th>CM-TTS</th>
                     <th>MM-TTS</th>
-					<th>MM-TTS(vae)</th>
-					<th>Recording</th>
+					<th>MM-TTS\( \mathrm{_{vae}} \)</th>
+					<th>GT</th>
                 </tr>
             </thead>
             <tbody>
@@ -450,8 +481,8 @@
                     <th>Language \ System</th>
                     <th>CM-TTS</th>
                     <th>MM-TTS</th>
-					<th>MM-TTS(vae)</th>
-					<th>Recording</th>
+					<th>MM-TTS\( \mathrm{_{vae}} \)</th>
+					<th>GT</th>
                 </tr>
             </thead>
             <tbody>
@@ -539,8 +570,8 @@
                     <th>Language \ System</th>
                     <th>CM-TTS</th>
                     <th>MM-TTS</th>
-					<th>MM-TTS(vae)</th>
-					<th>Recording</th>
+					<th>MM-TTS\( \mathrm{_{vae}} \)</th>
+					<th>GT</th>
                 </tr>
             </thead>
             <tbody>
